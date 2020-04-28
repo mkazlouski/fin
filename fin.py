@@ -33,13 +33,13 @@ def read_alfabank(path_or_file):
 
 def read_ideabank(path_or_file):
     def amount(x):
-        return float(x.replace(' BYN', ''))
+        return float(x.rstrip('BYN '))
 
     frame = pandas.read_excel(
             path_or_file,
             skiprows=6,
             skipfooter=1,
-            usecols=[0, 2, 4, 6, 7],
+            usecols=(0, 2, 4, 6, 7),
             converters={3: amount},
             parse_dates=['Date'],
             dayfirst=True,
