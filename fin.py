@@ -16,19 +16,29 @@ def read_me(path_or_file):
 
 
 def read_cs(path_or_file):
-    '''
-    a[a['Transaction time'] > pd.to_datetime('2020-04-06')].groupby(
-        'Transaction time')['Amount in operation currency'].agg('sum').median()
-    '''
     frame = pandas.read_csv(
         path_or_file,
         encoding='cp1251',
         sep=';',
         skiprows=2,
-        parse_dates=['Transaction time'],
-        dayfirst=True)
-    frame = frame[(frame['Operation type'] != 'Получение средств') &
-                  (frame['Operation status'] == 'Завершено успешно')]
+        header=0,
+        names=(
+            'Transaction',
+            'Date',
+            'Type',
+            'Status',
+            'Amount',
+            'Currency',
+            'City',
+            'Country',
+            'Details',
+        ),
+        parse_dates=['Date'],
+        dayfirst=True,
+        infer_datetime_format=True,
+    )
+    frame = frame[(frame['Type'] != 'Получение средств') &
+                  (frame['Status'] == 'Завершено успешно')]
     return frame
 
 
