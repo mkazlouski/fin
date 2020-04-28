@@ -37,8 +37,8 @@ def read_cs(path_or_file):
         dayfirst=True,
         infer_datetime_format=True,
     )
-    frame = frame[(frame['Type'] != 'Получение средств') &
-                  (frame['Status'] == 'Завершено успешно')]
+    frame = frame[(frame.Type != 'Получение средств') &
+                  (frame.Status == 'Завершено успешно')]
     return frame
 
 
