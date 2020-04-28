@@ -47,7 +47,6 @@ def read_ideabank(path_or_file):
     ).dropna()
     frame = frame[(frame.Status == 'Completed successfully') &
                   (frame.Amount < 0)]
-    frame.Date = frame.Date.dt.date
     return frame
 
 
