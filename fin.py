@@ -4,17 +4,6 @@ import sys
 import io
 
 
-def read_me(path_or_file):
-    return pandas.read_csv(
-        path_or_file,
-        encoding='cp1251',
-        sep=';',
-        skiprows=2,
-        parse_dates=['Date'],
-        dayfirst=True,
-        decimal=',').dropna()
-
-
 def read_alfabank(path_or_file):
     frame = pandas.read_csv(
         path_or_file,
@@ -78,5 +67,6 @@ def read_vpsk(path_or_file):
 
 
 if __name__ == '__main__':
-    read_me(io.TextIOWrapper(sys.stdin.buffer, encoding='cp1251')).to_csv(
+    read_alfabank(io.TextIOWrapper(
+        sys.stdin.buffer, encoding='cp1251')).to_csv(
             sys.stdout, index=False)
