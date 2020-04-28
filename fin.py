@@ -46,7 +46,8 @@ def read_ideabank(path_or_file):
             names=('Date', 'Details', 'MCC', 'Amount', 'Status'),
     ).dropna()
     frame = frame[(frame.Status == 'Completed successfully') &
-                  (frame.Amount < 0)]
+                  (frame.Amount < 0) &
+                  (~frame.Details.str.contains('SOA Debit'))]
     return frame
 
 
