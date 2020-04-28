@@ -15,7 +15,7 @@ def read_me(path_or_file):
         decimal=',').dropna()
 
 
-def read_cs(path_or_file):
+def read_alfabank(path_or_file):
     frame = pandas.read_csv(
         path_or_file,
         encoding='cp1251',
