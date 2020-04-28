@@ -43,7 +43,7 @@ def read_ideabank(path_or_file):
             converters={3: amount},
             parse_dates=['Date'],
             dayfirst=True,
-            names=('Date', 'Details', 'MMC', 'Amount', 'Status'),
+            names=('Date', 'Details', 'MCC', 'Amount', 'Status'),
     ).dropna()
     frame = frame[(frame.Status == 'Completed successfully') &
                   (frame.Amount < 0)]
