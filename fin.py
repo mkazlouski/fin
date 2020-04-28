@@ -31,7 +31,7 @@ def read_alfabank(path_or_file):
     return frame
 
 
-def read_cs2(path_or_file):
+def read_ideabank(path_or_file):
     def amount(x):
         return float(x.replace(' BYN', ''))
 
