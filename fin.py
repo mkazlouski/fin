@@ -45,8 +45,8 @@ def read_ideabank(path_or_file):
             dayfirst=True,
             names=('Date', 'Details', 'MMC', 'Amount', 'Status'),
     ).dropna()
-    frame = frame[(frame['Status'] == 'Completed successfully') &
-                  (frame['Amount'] < 0)]
+    frame = frame[(frame.Status == 'Completed successfully') &
+                  (frame.Amount < 0)]
     frame.Date = frame.Date.dt.date
     return frame
 
