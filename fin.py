@@ -29,7 +29,6 @@ def read_cs(path_or_file):
         dayfirst=True)
     frame = frame[(frame['Operation type'] != 'Получение средств') &
                   (frame['Operation status'] == 'Завершено успешно')]
-    frame['Transaction time'] = frame['Transaction time'].dt.date
     return frame
 
 
