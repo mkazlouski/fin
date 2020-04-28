@@ -51,21 +51,6 @@ def read_cs2(path_or_file):
     return frame
 
 
-def read_vpsk(path_or_file):
-    # TODO: modify the copy.
-    frame = pandas.read_csv(
-        path_or_file,
-        encoding='cp1251',
-        sep=';',
-        skiprows=2,
-        parse_dates=['Transaction time'],
-        dayfirst=True)
-    frame = frame[(frame['Operation type'] != 'Получение средств') &
-                  (frame['Operation status'] == 'Завершено успешно')]
-    frame['Transaction time'] = frame['Transaction time'].dt.date
-    return frame
-
-
 if __name__ == '__main__':
     read_alfabank(io.TextIOWrapper(
         sys.stdin.buffer, encoding='cp1251')).to_csv(
