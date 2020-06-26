@@ -33,7 +33,7 @@ def read_alfabank(path_or_file):
 
 def read_ideabank(path_or_file):
     def amount(x):
-        return float(x.rstrip('BYN '))
+        return float(x.strip('BYN Commission:'))
 
     frame = pandas.read_excel(
             path_or_file,
